@@ -55,7 +55,26 @@ const printArray = function (arr) {
   6th: reverse("hello") ==> i === -1, baseCase met
 */
 
-const reverseString = function () {};
+/* 
+    1. initialize scope variable, reversedStr = ""
+    2. Instantiate and invoke helper method w/ initial values
+    3. base case: str.length < 0
+    4. recursive case: i - 1
+*/
+const reverseString = function (str) {
+  let reversedStr = "";
+
+  function traverse(i) {
+    if (i < 0) return;
+
+    reversedStr += str[i];
+    traverse(i - 1);
+  }
+
+  traverse(str.length - 1);
+
+  return reversedStr;
+};
 
 /* 
     Given a positive integer n, return an array of all the 
@@ -92,4 +111,4 @@ const nonConsecutiveOnes = function (n) {};
     So the length L is 2, and the width W is 2.
 */
 
-const buildRectangle = function(area) {}
+const buildRectangle = function (area) {};
