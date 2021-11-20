@@ -91,9 +91,41 @@ const reverseString = function (str) {
 
     Time Complexity: O(2^N)
     Auxiliary Space Complexity: O(2^N)
+    
+    1. Scope variable
+    2. Helper Method
+    3. Base Case
+    4. Recursive Case
+    
+    1. Init resultArr
+    2. Helper method param = ""
+    3. base case - if preceding num is 1
+    
+    Initialize an empty array and return it at the end of the function
+    Initialize a helper method that takes a string, substr, as an input, and it invoked below with the empty string
+    a) If the length of substr is equal to n, push substr into the result array and return
+    b) Otherwise, invoke the helper function again with substr + 0 as its argument
+    c) If the character at the last index of substr is a 0, then recurse with substr + 1
 */
 
-const nonConsecutiveOnes = function (n) {};
+const nonConsecutiveOnes = function (n) {
+  const result = [];
+
+  function recurse(subStr = "") {
+    if (subStr.length === n) {
+      result.push(subStr);
+      return;
+    }
+    recurse(subStr + 0);
+    if (subStr.charAt(subStr.length - 1) !== "1") {
+      recurse(subStr + 1);
+    }
+  }
+
+  recurse("");
+
+  return result;
+};
 
 /* 
     A web developer needs to know how to design a web page's size. So, given a specific rectangular web page’s area, 
