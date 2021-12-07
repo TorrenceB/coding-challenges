@@ -1,4 +1,3 @@
-
 /*  Instructions: Dynamic programming takes a lot of practice to recognize as
  *                well as develop algorithms. Thus we will be working on a few
  *                different problems using dynammic programming.
@@ -61,5 +60,21 @@
 // Time Complexity:
 // Auxiliary Space Complexity:
 function latticePaths(m, n) {
-  //YOUR WORK HERE
+  // we need a key to check for
+  const key = `${m},${n}`;
+  // init cache
+  const cache = {};
+  // init helper method and return w/ initial values
+  // Base case(s)
+  const recurse = function () {
+    if (m < 0 || n < 0) return 0;
+    if (m === 0 && n === 0) return 1;
+    if (cache[key]) return cache[key];
+    //recursive cases
+    cache[key] = recurse(m - 1, n) + recurse(m, n - 1);
+  };
+
+  recurse(m, n);
+
+  return cache;
 }
