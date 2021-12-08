@@ -66,12 +66,14 @@ function latticePaths(m, n) {
   const cache = {};
   // init helper method and return w/ initial values
   // Base case(s)
-  const recurse = function () {
+  const recurse = function (m, n) {
     if (m < 0 || n < 0) return 0;
     if (m === 0 && n === 0) return 1;
     if (cache[key]) return cache[key];
     //recursive cases
     cache[key] = recurse(m - 1, n) + recurse(m, n - 1);
+
+    return cache[key];
   };
 
   recurse(m, n);
